@@ -28,9 +28,9 @@ import ManageMovimientoPage from "./movimiento/ManageMovimientoPage";
 
 import RetiroPage from "./retiro/RetiroPage";
 import ManageRetiroPage from "./retiro/ManageRetiroPage";
-
 class App extends Component {
   render() {
+    return(
     <div className="container-fluid">
       <Header />
       <Switch>
@@ -39,21 +39,15 @@ class App extends Component {
         <Route path="/retiros" component={RetiroPage} />
         <Route path="/retiro/:slug" component={ManageRetiroPage} />
         <Route path="/retiro" component={ManageRetiroPage} />
-
-        <Route component={PageNotFound} />
         <Route path="/transferencias" component={TransferPage} />
         <Route path="/login" component={LoginForm} />
-        <Route path="/MisTransacciones" component={CoursesPage} />
         <Route path="/clientes" component={ClientePage} />
         <Route path="/cliente/:slug" component={ManageClientePage} />
         <Route path="/cliente" component={ManageClientePage} />
 
-        <Route component={PageNotFound} />
-
         <Route path="/productos" component={ProductoPage} />
         <Route path="/producto/:slug" component={ManageProductoPage} />
         <Route path="/producto" component={ManageProductoPage} />
-        <Route component={PageNotFound} />
         <Route path="/transferencias" component={TransferPage} />
          <Route path="/movimientos" component={MovimientoPage} />
         <Route path="/movimiento/:slug" component={ManageMovimientoPage} />

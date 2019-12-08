@@ -6,7 +6,7 @@ import {
 } from "../../redux/actions/retiroActions";
 import PropTypes from "prop-types";
 import RetiroForm from "./RetiroForm";
-import { newCliente } from "../../../tools/mockData";
+import { newRetiro } from "../../../tools/mockData";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
@@ -104,4 +104,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ManageClientePage);
+)(ManageRetiroPage);

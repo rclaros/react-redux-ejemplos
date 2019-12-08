@@ -140,6 +140,12 @@ const newProfessor = {
   name: ""
 };
 
+const newRetiro = {
+  id: null,
+  name: ""
+};
+
+
 const clientes = [
   { id: 1, name: "Apache Kafka" , Cuenta:"1234-1234-1234"},
   { id: 2, name: "Apache NIFI", Cuenta:"1235-1568-1678"},
@@ -173,6 +179,7 @@ module.exports = {
   newCourse,
   newProfessor,
   newCliente,
+  newRetiro,
   newMovimiento,
   courses,
   professors,
