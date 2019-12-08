@@ -5,20 +5,16 @@ const Header = () => {
   const activeStyle = { color: "#F15B2A" };
   return (
     <nav>
-      <NavLink to="/" activeStyle={activeStyle} exact>
+      <NavLink to="/login" activeStyle={activeStyle} exact>
+        login
+      </NavLink>
+      {" | "}
+     <NavLink to="/" activeStyle={activeStyle} exact>
         Home
       </NavLink>
-      {" | "}
-      <NavLink to="/courses" activeStyle={activeStyle}>
-        Courses
-      </NavLink>
-      {" | "}
-      <NavLink to="/professors" activeStyle={activeStyle}>
-        Professors
-      </NavLink>
-      {" | "}
-      <NavLink to="/productos" activeStyle={activeStyle}>
-        Producto
+      {" | "} 
+      <NavLink to="/Mistransciones" activeStyle={activeStyle} exact>
+        MisTransaciones
       </NavLink>
       {" | "}
       <NavLink to="/clientes" activeStyle={activeStyle}>

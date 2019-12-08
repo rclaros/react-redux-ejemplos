@@ -1,9 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import { Component } from 'react';
 import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import Header from "./common/Header";
 import PageNotFound from "./PageNotFound";
+
+import LoginForm from "./Auth/LoginForm";
+
 import CoursesPage from "./courses/CoursesPage";
 import ManageCoursePage from "./courses/ManageCoursePage"; // eslint-disable-line import/no-named-as-default
 import { ToastContainer } from "react-toastify";
@@ -16,18 +20,28 @@ import ManageClientePage from "./cliente/ManageClientePage";
 
 import ProductoPage from "./productos/ProductosPage";
 import ManageProductoPage from "./productos/ManageProductoPage";
+import ManageTranfersPage from "./Transfers/ManageTranfersPage";
 
-function App() {
-  return (
-    <div className="container-fluid">
+
+class App extends Component {
+
+
+
+  render() {
+     return (
+      <div className="container-fluid">
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         
+        <Route path="/login" component={LoginForm} />
+
         <Route path="/courses" component={CoursesPage} />
         <Route path="/course/:slug" component={ManageCoursePage} />
         <Route path="/course" component={ManageCoursePage} />
+
+        <Route path="/MisTransacciones" component={CoursesPage} />
 
         <Route path="/professors" component={ProfessorPage} />
         <Route path="/professor/:slug" component={ManageProfessorPage} />
@@ -47,7 +61,7 @@ function App() {
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />
     </div>
-  );
+     );
+  }
 }
-
 export default App;
