@@ -72,8 +72,8 @@ class ClienteList extends React.Component {
             cliente
           </TableHeaderColumn>
           <TableHeaderColumn
-            dataField="name" 
-            dataSort
+            dataField="Cuenta" /*name*/
+                        dataSort
             tdStyle={{ whiteSpace: "normal" }}
           >
             Cuenta
