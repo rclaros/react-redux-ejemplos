@@ -7,6 +7,12 @@ const Header = () => {
     <nav>
       <NavLink to="/login" activeStyle={activeStyle} exact>
         login
+          <NavLink to="/" activeStyle={activeStyle} exact>
+        Home
+      </NavLink>
+      {" | "}
+      <NavLink to="/courses" activeStyle={activeStyle}>
+        courses
       </NavLink>
       {" | "}
      <NavLink to="/" activeStyle={activeStyle} exact>
@@ -21,8 +27,18 @@ const Header = () => {
         Cliente
       </NavLink>
       {" | "}
+      <NavLink to="/transferencias" activeStyle={activeStyle}>
+        Transferencia
+          <NavLink to="/movimientos" activeStyle={activeStyle}>
+        Mis Transacciones
+      </NavLink>
+      {" | "}
       <NavLink to="/about" activeStyle={activeStyle}>
         About
+      </NavLink>
+      {" | "}
+      <NavLink to="/Depositos" activeStyle={activeStyle}>
+        Depositos
       </NavLink>
     </nav>
   );

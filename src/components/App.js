@@ -24,16 +24,23 @@ import ManageTranfersPage from "./Transfers/ManageTranfersPage";
 
 
 class App extends Component {
-
-
-
   render() {
      return (
       <div className="container-fluid">
+       import TransferPage from "./transferencias/TransferPage";
+       import MovimientoPage from "./movimiento/MovimientoPage";
+       import ManageMovimientoPage from "./movimiento/ManageMovimientoPage";
+
+function App() {
+  return (
+    <div className="container-fluid">
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+
+        <Route path="/transferencias" component={TransferPage} />
+
         
         <Route path="/login" component={LoginForm} />
 
@@ -56,6 +63,11 @@ class App extends Component {
         <Route path="/productos" component={ProductoPage} />
         <Route path="/producto/:slug" component={ManageProductoPage} />
         <Route path="/producto" component={ManageProductoPage} />
+        <Route component={PageNotFound} />
+        <Route path="/transferencias" component={TransferPage} />
+         <Route path="/movimientos" component={MovimientoPage} />
+        <Route path="/movimiento/:slug" component={ManageMovimientoPage} />
+        <Route path="/movimiento" component={ManageMovimientoPage} />
         <Route component={PageNotFound} />
 
       </Switch>

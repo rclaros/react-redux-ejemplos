@@ -4,6 +4,7 @@ import TextInput from "../common/TextInput";
 
 const ClienteForm = ({
   cliente,
+  Cuenta,
   onSave,
   onChange,
   saving = false,
@@ -24,6 +25,13 @@ const ClienteForm = ({
         value={cliente.name}
         onChange={onChange}
         error={errors.title}
+      />
+       <TextInput
+        name="Cuenta"
+        label="Cuenta"
+        value={cliente.Cuenta}
+        onChange={onChange}
+        error={errors.Cuenta}
       />
 
        <button type="submit" disabled={saving} className="btn btn-primary">
