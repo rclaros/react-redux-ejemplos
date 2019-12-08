@@ -11,11 +11,25 @@ export default {
     data:[],
     total:0
   },
+
+  movimientos: {
+    data:[],
+    total:0
+  },
+
+  listmovimiento:{
+    movimientos:[]
+  },
+
   list:{
     professors:[]
   },
-  listcliente:{
+  listCliente:{
     clientes:[]
+    /*Cuenta:[]
+    data:[],
+    total:*/
   },
+
   apiCallsInProgress: 0
 };

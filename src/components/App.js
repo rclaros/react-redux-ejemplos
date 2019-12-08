@@ -18,6 +18,8 @@ import ProductoPage from "./productos/ProductosPage";
 import ManageProductoPage from "./productos/ManageProductoPage";
 
 import TransferPage from "./transferencias/TransferPage";
+import MovimientoPage from "./movimiento/MovimientoPage";
+import ManageMovimientoPage from "./movimiento/ManageMovimientoPage";
 
 function App() {
   return (
@@ -48,8 +50,11 @@ function App() {
         <Route path="/producto/:slug" component={ManageProductoPage} />
         <Route path="/producto" component={ManageProductoPage} />
         <Route component={PageNotFound} />
-
         <Route path="/transferencias" component={TransferPage} />
+         <Route path="/movimientos" component={MovimientoPage} />
+        <Route path="/movimiento/:slug" component={ManageMovimientoPage} />
+        <Route path="/movimiento" component={ManageMovimientoPage} />
+        <Route component={PageNotFound} />
 
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />

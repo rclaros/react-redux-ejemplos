@@ -10,7 +10,7 @@ const Header = () => {
       </NavLink>
       {" | "}
       <NavLink to="/courses" activeStyle={activeStyle}>
-        Courses
+        courses
       </NavLink>
       {" | "}
       <NavLink to="/professors" activeStyle={activeStyle}>
@@ -27,10 +27,16 @@ const Header = () => {
       {" | "}
       <NavLink to="/transferencias" activeStyle={activeStyle}>
         Transferencia
+          <NavLink to="/movimientos" activeStyle={activeStyle}>
+        Mis Transacciones
       </NavLink>
       {" | "}
       <NavLink to="/about" activeStyle={activeStyle}>
         About
+      </NavLink>
+      {" | "}
+      <NavLink to="/Depositos" activeStyle={activeStyle}>
+        Depositos
       </NavLink>
     </nav>
   );
