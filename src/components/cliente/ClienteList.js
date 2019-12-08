@@ -69,7 +69,25 @@ class ClienteList extends React.Component {
             tdStyle={{ whiteSpace: "normal" }}
             width="250"
           >
-            cliente
+             cliente
+          </TableHeaderColumn>
+          <TableHeaderColumn
+            dataField="cliente"
+            dataSort
+            dataAlign="center"
+            dataFormat={this.cellButton}
+            tdStyle={{ whiteSpace: "normal" }}
+            width="250"
+          >
+           Tranferencia
+          </TableHeaderColumn>
+          <TableHeaderColumn
+            dataField="transaction" 
+            dataSort
+            dataFormat={this.cellButtonDelete}
+            dataAlign="center"
+          >
+            Opcion cliente
           </TableHeaderColumn>
           <TableHeaderColumn
             dataField="Cuenta" /*name*/
@@ -77,7 +95,6 @@ class ClienteList extends React.Component {
             tdStyle={{ whiteSpace: "normal" }}
           >
             Cuenta
-            
           </TableHeaderColumn>
           
         </BootstrapTable>

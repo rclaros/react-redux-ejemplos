@@ -17,6 +17,7 @@ import ManageClientePage from "./cliente/ManageClientePage";
 import ProductoPage from "./productos/ProductosPage";
 import ManageProductoPage from "./productos/ManageProductoPage";
 
+import TransferPage from "./transferencias/TransferPage";
 import MovimientoPage from "./movimiento/MovimientoPage";
 import ManageMovimientoPage from "./movimiento/ManageMovimientoPage";
 
@@ -27,6 +28,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+
+        <Route path="/transferencias" component={TransferPage} />
+
         
         <Route path="/courses" component={CoursesPage} />
         <Route path="/course/:slug" component={ManageCoursePage} />
@@ -46,8 +50,8 @@ function App() {
         <Route path="/producto/:slug" component={ManageProductoPage} />
         <Route path="/producto" component={ManageProductoPage} />
         <Route component={PageNotFound} />
-
-        <Route path="/movimientos" component={MovimientoPage} />
+        <Route path="/transferencias" component={TransferPage} />
+         <Route path="/movimientos" component={MovimientoPage} />
         <Route path="/movimiento/:slug" component={ManageMovimientoPage} />
         <Route path="/movimiento" component={ManageMovimientoPage} />
         <Route component={PageNotFound} />
