@@ -1,5 +1,6 @@
 import { handleResponse, handleError, handleResponseList  } from "./apiUtils";
 const baseUrl = process.env.API_URL + "/clientes/";
+const baseUrl_Cuenta = process.env.API_URL + "/Cuentas/";
 
 export function getClientes() {
   return fetch(baseUrl)

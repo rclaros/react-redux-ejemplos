@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 
 export function ManageClientePage({
   clientes,
+  Cuenta,
   getClientes,
   saveCliente,
   history,
@@ -68,6 +69,7 @@ export function ManageClientePage({
   ) : (
     <ClienteForm
       cliente={cliente}
+      Cuenta={Cuenta}
       errors={errors}
       onChange={handleChange}
       onSave={handleSave}
