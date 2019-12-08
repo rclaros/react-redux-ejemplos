@@ -59,7 +59,7 @@ class ClienteList extends React.Component {
             sortOrder: this.props.sortOrder,
           }}
         >
-          <TableHeaderColumn dataField="id" isKey width="50">
+         <TableHeaderColumn dataField="id" isKey width="50">
             Id
           </TableHeaderColumn>
           <TableHeaderColumn
@@ -69,15 +69,17 @@ class ClienteList extends React.Component {
             tdStyle={{ whiteSpace: "normal" }}
             width="250"
           >
-            Cliente
+            cliente
           </TableHeaderColumn>
           <TableHeaderColumn
-            dataField="name" /*revisarnameCliente*/
-            dataFormat={this.cellButtonDelete}
-            dataAlign="center"
+            dataField="name" 
+            dataSort
+            tdStyle={{ whiteSpace: "normal" }}
           >
-            Opcion
+            Cuenta
+            
           </TableHeaderColumn>
+          
         </BootstrapTable>
       </div>
     );

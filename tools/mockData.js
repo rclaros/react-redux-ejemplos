@@ -141,18 +141,19 @@ const newProfessor = {
 };
 
 const clientes = [
-  { id: 1, name: "Apache Kafka" },
-  { id: 2, name: "Apache NIFI" },
-  { id: 3, name: "Apache Spark" },
-  { id: 4, name: "kNEAM" },
-  { id: 5, name: "ELK" },
-  { id: 6, name: "PIG" },
-  { id: 7, name: "CSSANDRA" },
+  { id: 1, name: "Apache Kafka" , Cuenta:"1234-1234-1234"},
+  { id: 2, name: "Apache NIFI", Cuenta:"1235-1568-1678"},
+  { id: 3, name: "Apache Spark", Cuenta:"1278-8767-9456" },
+  { id: 4, name: "kNEAM", Cuenta:"1209-4356-7865" },
+  { id: 5, name: "ELK", Cuenta:"1267-3454-3423"},
+  { id: 6, name: "PIG", Cuenta:"1289-5467-7843" },
+  { id: 7, name: "CSSANDRA", Cuenta:"1267-6479-4793" },
 ];
 
 const newCliente = {
   id: null,
-  name: ""
+  name: "",
+  Cuenta:""
 };
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
