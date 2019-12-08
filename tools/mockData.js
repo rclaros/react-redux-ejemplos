@@ -155,13 +155,27 @@ const newCliente = {
   name: ""
 };
 
+const movimientos = [
+  { id: 1, transaccion: "deposito", monto:"10", fecha:"8/12/2019" },
+  { id: 2, transaccion: "retiro", monto:"10", fecha:"8/12/2019" },
+];
+
+const newMovimiento= {
+  id: null,
+  transaccion: "",
+  monto: "",
+  fecha: ""
+};
+
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   newCourse,
   newProfessor,
   newCliente,
+  newMovimiento,
   courses,
   professors,
-  clientes
+  clientes,
+  movimientos
 };
 

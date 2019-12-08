@@ -17,6 +17,9 @@ import ManageClientePage from "./cliente/ManageClientePage";
 import ProductoPage from "./productos/ProductosPage";
 import ManageProductoPage from "./productos/ManageProductoPage";
 
+import MovimientoPage from "./movimiento/MovimientoPage";
+import ManageMovimientoPage from "./movimiento/ManageMovimientoPage";
+
 function App() {
   return (
     <div className="container-fluid">
@@ -42,6 +45,11 @@ function App() {
         <Route path="/productos" component={ProductoPage} />
         <Route path="/producto/:slug" component={ManageProductoPage} />
         <Route path="/producto" component={ManageProductoPage} />
+        <Route component={PageNotFound} />
+
+        <Route path="/movimientos" component={MovimientoPage} />
+        <Route path="/movimiento/:slug" component={ManageMovimientoPage} />
+        <Route path="/movimiento" component={ManageMovimientoPage} />
         <Route component={PageNotFound} />
 
       </Switch>
