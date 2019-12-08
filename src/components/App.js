@@ -17,6 +17,9 @@ import ManageClientePage from "./cliente/ManageClientePage";
 import ProductoPage from "./productos/ProductosPage";
 import ManageProductoPage from "./productos/ManageProductoPage";
 
+import RetiroPage from "./retiro/RetiroPage";
+import ManageRetiroPage from "./retiro/ManageRetiroPage";
+
 function App() {
   return (
     <div className="container-fluid">
@@ -32,6 +35,12 @@ function App() {
         <Route path="/professors" component={ProfessorPage} />
         <Route path="/professor/:slug" component={ManageProfessorPage} />
         <Route path="/professor" component={ManageProfessorPage} />
+
+        <Route path="/retiros" component={RetiroPage} />
+        <Route path="/retiro/:slug" component={ManageRetiroPage} />
+        <Route path="/retiro" component={ManageRetiroPage} />
+
+        <Route component={PageNotFound} />
 
         <Route path="/clientes" component={ClientePage} />
         <Route path="/cliente/:slug" component={ManageClientePage} />
