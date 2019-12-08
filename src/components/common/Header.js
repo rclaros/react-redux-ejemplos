@@ -25,6 +25,10 @@ const Header = () => {
         Cliente
       </NavLink>
       {" | "}
+      <NavLink to="/Depositos" activeStyle={activeStyle}>
+        Depositos
+      </NavLink>
+      {" | "}
       <NavLink to="/about" activeStyle={activeStyle}>
         About
       </NavLink>
