@@ -1,5 +1,6 @@
-import { handleResponse, handleError, handleResponseList  } from "./apiUtils";
+import { handleResponse, handleError, handleResponseList,handleResponseRemote  } from "./apiUtils";
 const baseUrl = process.env.API_URL + "/clientes/";
+const baseUrlRemote ="http://localhost:8080/customers?page=0&size=10";
 const baseUrl_Cuenta = process.env.API_URL + "/Cuentas/";
 
 export function getClientes() {
@@ -15,6 +16,14 @@ export function getClientesData(page,_sort,_order) {
   }
   return fetch(baseUrl + "?_page="+page+"&_limit=3"+string_order)
   .then(handleResponseList)
+  .catch(handleError);
+}
+export function getClientesDatax(page,_sort,_order) {
+  return fetch(baseUrlRemote,{
+    crossDomain:true,
+    headers: {'Content-Type':'application/json'}
+  })
+  .then(handleResponseRemote)
   .catch(handleError);
 }
 
