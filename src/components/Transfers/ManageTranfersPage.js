@@ -5,14 +5,13 @@ import {
   saveCliente
 } from "../../redux/actions/clienteActions";
 import PropTypes from "prop-types";
-import ClienteForm from "./ClienteForm";
+import TranfersForm from "./TranfersForm";
 import { newCliente } from "../../../tools/mockData";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
-export function ManageClientePage({
+export function ManageTranfersPage({
   clientes,
-  Cuenta,
   getClientes,
   saveCliente,
   history,
@@ -67,9 +66,8 @@ export function ManageClientePage({
   return clientes.length === 0 ? (
     <Spinner />
   ) : (
-    <ClienteForm
+    <TranfersForm
       cliente={cliente}
-      Cuenta={Cuenta}
       errors={errors}
       onChange={handleChange}
       onSave={handleSave}
@@ -78,7 +76,7 @@ export function ManageClientePage({
   );
 }
 
-ManageClientePage.propTypes = {
+ManageTranfersPage.propTypes = {
   cliente: PropTypes.array.isRequired,
   getClientes: PropTypes.func.isRequired,
   saveCliente: PropTypes.func.isRequired,
@@ -106,4 +104,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ManageClientePage);
+)(ManageTranfersPage);

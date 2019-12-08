@@ -8,7 +8,7 @@ import {
 } from "react-bootstrap-table";
 
 
-class ClienteList extends React.Component {
+class MovimientoList extends React.Component {
   constructor(props) {
     super(props);
     this.cellButton = this.cellButton.bind(this);
@@ -17,7 +17,7 @@ class ClienteList extends React.Component {
   }
 
   cellButton(cell, row) {
-    return <Link to={"/cliente/" + row.id}>{row.name}</Link>;
+    return <Link to={"/movimiento/" + row.id}>{row.name}</Link>;
   }
 
   cellButtonDelete(cell, row) {
@@ -48,7 +48,7 @@ class ClienteList extends React.Component {
     return (
       <div>
         <BootstrapTable
-          data={this.props.clientes}
+          data={this.props.movimientos}
           search={true}
           bodyStyle={{ lineHeight: "22px" }}
           options={{
@@ -59,7 +59,7 @@ class ClienteList extends React.Component {
             sortOrder: this.props.sortOrder,
           }}
         >
-         <TableHeaderColumn dataField="id" isKey width="50">
+          <TableHeaderColumn dataField="id" isKey width="50">
             Id
           </TableHeaderColumn>
           <TableHeaderColumn
@@ -69,34 +69,36 @@ class ClienteList extends React.Component {
             tdStyle={{ whiteSpace: "normal" }}
             width="250"
           >
-             cliente
+            Mis Transacciones
           </TableHeaderColumn>
+
           <TableHeaderColumn
-            dataField="cliente"
+            dataField="Monto"
             dataSort
-            dataAlign="center"
-            dataFormat={this.cellButton}
+            /*dataFormat={this.cellButton}
             tdStyle={{ whiteSpace: "normal" }}
-            width="250"
+            width="250"*/
           >
-           Tranferencia
+            Monto
           </TableHeaderColumn>
+
           <TableHeaderColumn
-            dataField="transaction" 
+            dataField="Fecha"
             dataSort
+            /*dataFormat={this.cellButton}
+            tdStyle={{ whiteSpace: "normal" }}
+            width="250"*/
+          >
+            Fecha
+          </TableHeaderColumn>
+
+          <TableHeaderColumn
+            dataField="name" /*revisarnameCliente*/
             dataFormat={this.cellButtonDelete}
             dataAlign="center"
           >
-            Opcion cliente
+            Opcion
           </TableHeaderColumn>
-          <TableHeaderColumn
-            dataField="Cuenta" /*name*/
-                        dataSort
-            tdStyle={{ whiteSpace: "normal" }}
-          >
-            Cuenta
-          </TableHeaderColumn>
-          
         </BootstrapTable>
       </div>
     );
@@ -104,9 +106,9 @@ class ClienteList extends React.Component {
   
 }
 
-ClienteList.propTypes = {
-  clientes: PropTypes.array.isRequired,
+MovimientoList.propTypes = {
+  movimientos: PropTypes.array.isRequired,
   onDeleteClick: PropTypes.func.isRequired
 };
 
-export default ClienteList;
+export default MovimientoList;

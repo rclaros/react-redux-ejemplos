@@ -1,48 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
-  getClientes,
-  saveCliente
-} from "../../redux/actions/clienteActions";
+  getRetiros,
+  saveRetiro
+} from "../../redux/actions/retiroActions";
 import PropTypes from "prop-types";
-import ClienteForm from "./ClienteForm";
+import RetiroForm from "./RetiroForm";
 import { newCliente } from "../../../tools/mockData";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
-export function ManageClientePage({
-  clientes,
-  Cuenta,
-  getClientes,
-  saveCliente,
+export function ManageRetiroPage({
+  retiros,
+  getRetiros,
+  saveRetiro,
   history,
   ...props
 }) {
-  const [cliente, setCliente] = useState({ ...props.cliente });
+  const [retiro, setRetiro] = useState({ ...props.retiro });
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (clientes.length === 0) {
-      getClientes().catch(error => {
-        alert("Loading clientes failed" + error);
+    if (retiros.length === 0) {
+      getRetiros().catch(error => {
+        alert("Loading retiros failed" + error);
       });
     } else {
-      setCliente({ ...props.cliente });
+      setRetiro({ ...props.retiro });
     }
-  }, [props.clientes]);
+  }, [props.retiros]);
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setCliente(prevCliente => ({
-      ...prevCliente,[name]: name === "clienteId" ? parseInt(value, 10) : value
+    setRetiro(prevRetiro => ({
+      ...prevRetiro,[name]: name === "retiroId" ? parseInt(value, 10) : value
     }));
   }
 
   function formIsValid() {
-    const {name } = cliente;
+    const {name } = retiro;
     const errors = {};
-    if (!name) errors.name = "Cliente Name is required.";
+    if (!name) errors.name = "Retiro is required.";
 
     setErrors(errors);
     // Form is valid if the errors object still has no properties
@@ -53,10 +52,10 @@ export function ManageClientePage({
     event.preventDefault();
     if (!formIsValid()) return;
     setSaving(true);
-    saveCliente(cliente)
+    saveRetiro(retiro)
       .then(() => {
-        toast.success("Cliente saved.");
-        history.push("/clientes");
+        toast.success("Retiro saved.");
+        history.push("/retiros");
       })
       .catch(error => {
         console.log("error", error);
@@ -64,12 +63,11 @@ export function ManageClientePage({
         setErrors({ onSave: error.message });
       });
   }
-  return clientes.length === 0 ? (
+  return retiros.length === 0 ? (
     <Spinner />
   ) : (
-    <ClienteForm
-      cliente={cliente}
-      Cuenta={Cuenta}
+    <RetiroForm
+      retiro={retiro}
       errors={errors}
       onChange={handleChange}
       onSave={handleSave}
@@ -78,29 +76,29 @@ export function ManageClientePage({
   );
 }
 
-ManageClientePage.propTypes = {
-  cliente: PropTypes.array.isRequired,
-  getClientes: PropTypes.func.isRequired,
-  saveCliente: PropTypes.func.isRequired,
+ManageRetiroPage.propTypes = {
+  retiro: PropTypes.array.isRequired,
+  getRetiros: PropTypes.func.isRequired,
+  saveRetiro: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };
 
-export function getClienteById(clientes, slug) {
-  return clientes.find(cliente => cliente.id === slug) || null;
+export function getRetiroById(retiros, slug) {
+  return retiros.find(retiro => retiro.id === slug) || null;
 }
 
 function mapStateToProps(state, ownProps) {
   const slug = ownProps.match.params.slug;
-  const cliente = slug && state.clientes.data.length > 0 ? getClienteById(state.clientes.data, +slug): newCliente;
+  const retiro = slug && state.retiros.data.length > 0 ? getRetiroById(state.retiros.data, +slug): newRetiro;
   return {
-    cliente,
-    clientes: state.clientes.data
+    retiro,
+    retiros: state.retiros.data
   };
 }
 
 const mapDispatchToProps = {
-  getClientes,
-  saveCliente
+  getRetiros,
+  saveRetiro
 };
 
 export default connect(

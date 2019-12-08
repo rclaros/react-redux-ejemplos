@@ -8,6 +8,8 @@ const HomePage = () => (
     <Link to="about" className="btn btn-primary btn-lg">
       Learn more
     </Link>
+    <h1>WELCOME BANKING</h1>
+    <p>REALIZA SUS OPERACIONES</p>
   </div>
 );
 

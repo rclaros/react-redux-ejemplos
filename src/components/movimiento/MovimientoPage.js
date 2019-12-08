@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as professorActions from "../../redux/actions/professorActions";
+import * as movimientoActions from "../../redux/actions/movimientoActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
-import ProfessorList from "./ProfessorList";
+import MovimientoList from "./MovimientoList";
 import { Redirect } from "react-router-dom";
-/*import Spinner from "../common/Spinner";*/
+import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 import Pagination from "react-js-pagination";
 
-class ProfessorsPage extends React.Component {
+class MovimientosPage extends React.Component {
   state = {
-    redirectToAddProfessorPage: false,
+    redirectToAddHistorialPage: false,
     page_current: 1,
     page_show: 5,
     sortName: undefined,
@@ -19,25 +19,25 @@ class ProfessorsPage extends React.Component {
   };
 
   componentDidMount() {
-    const { professors, actions } = this.props;
-    if (professors.length === 0) {
-      actions.getProfessors().catch(error => {
-        alert("Loading professors failed" + error);
+    const { movimiento, actions } = this.props;
+    if (movimiento.length === 0) {
+      actions.getHistorial().catch(error => {
+        alert("Loading movimiento failed" + error);
       });
     }
   }
 
-  handleDeleteProfessor = async professor => {
-    toast.success("Professor deleted");
+  handleDeleteMovimiento = async movimiento => {
+    toast.success("Movimiento deleted");
     try {
-      await this.props.actions.deleteProfessor(professor);
+      await this.props.actions.deleteMovimiento(movimiento);
     } catch (error) {
       toast.error("Delete failed. " + error.message, { autoClose: false });
     }
   };
   handlePageChange = async page => {
     this.setState({ page_current: page });
-    await this.props.actions.getProfessors(page);
+    await this.props.actions.getMovimientos(page);
   };
   handleSortChange = async (sortName, sortOrder) => {
     this.setState({
@@ -45,7 +45,7 @@ class ProfessorsPage extends React.Component {
       sortName: sortName,
       sortOrder: sortOrder
     });
-    await this.props.actions.getProfessors(
+    await this.props.actions.getMovimientos(
       this.state.page_current,
       sortName,
       sortOrder
@@ -56,20 +56,14 @@ class ProfessorsPage extends React.Component {
     console.log("this.props", this.props);
     return (
       <>
-        {this.state.redirectToAddProfessorPage && <Redirect to="/professor" />}
-        <h2>Professors</h2>
-        <button
-          style={{ marginBottom: 20 }}
-          className="btn btn-primary add-professor"
-          onClick={() => this.setState({ redirectToAddProfessorPage: true })}
-        >
-          Add Professor
-        </button>
+        {this.state.redirectToAddMovimientoPage && <Redirect to="/movimiento" />}
+        <h2>Mis Transacciones</h2>
 
-        <ProfessorList
-          onDeleteClick={this.handleDeleteProfessor}
+
+       <MovimientoList
+          onDeleteClick={this.handleDeleteMovimiento}
           onOrder={this.handleSortChange}
-          professors={this.props.professors}
+          movimientos={this.props.movimientos}
           sortName={this.state.sortName}
           sortOrder={this.state.sortOrder}
         />
@@ -77,7 +71,7 @@ class ProfessorsPage extends React.Component {
           <Pagination
             activePage={this.state.page_current}
             itemsCountPerPage={this.state.page_show}
-            totalItemsCount={this.props.total_professor}
+            totalItemsCount={this.props.total_movimiento}
             onChange={this.handlePageChange}
           />
         </div>
@@ -86,8 +80,8 @@ class ProfessorsPage extends React.Component {
   }
 }
 
-ProfessorsPage.propTypes = {
-  professors: PropTypes.array.isRequired,
+MovimientosPage.propTypes = {
+  movimientos: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
 };
@@ -95,8 +89,8 @@ ProfessorsPage.propTypes = {
 function mapStateToProps(state) {
   console.log("mapStateToProps", state);
   return {
-    professors: state.professors.data,
-    total_professor: state.professors.total,
+    movimientos: state.movimientos.data,
+    total_movimiento: state.movimientos.total,
     loading: state.apiCallsInProgress > 0
   };
 }
@@ -104,16 +98,17 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      getProfessors: bindActionCreators(
-        professorActions.getProfessorsData,
+      getMovimientos: bindActionCreators(
+        movimientoActions.getMovimientosData,
         dispatch
       ),
-      deleteProfessor: bindActionCreators(
-        professorActions.deleteProfessor,
+      deleteMovimiento: bindActionCreators(
+        movimientoActions.deleteMovimiento,
+       
         dispatch
       )
     }
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfessorsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MovimientosPage);
