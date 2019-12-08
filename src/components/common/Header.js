@@ -13,14 +13,6 @@ const Header = () => {
         Home
       </NavLink>
       {" | "}
-      <NavLink to="/courses" activeStyle={activeStyle}>
-        courses
-      </NavLink>
-      {" | "}
-      <NavLink to="/" activeStyle={activeStyle} exact>
-        Home
-      </NavLink>
-      {" | "}
       <NavLink to="/Mistransciones" activeStyle={activeStyle} exact>
         MisTransaciones
       </NavLink>
@@ -31,8 +23,12 @@ const Header = () => {
       {" | "}
       <NavLink to="/Depositos" activeStyle={activeStyle}>
         Depositos
-          <NavLink to="/retiro" activeStyle={activeStyle}>
+        </NavLink>
+        {" | "}
+      <NavLink to="/retiro" activeStyle={activeStyle}>
       Retiro
+      </NavLink>
+      {" | "}
       <NavLink to="/transferencias" activeStyle={activeStyle}>
         Transferencia
       </NavLink>
@@ -43,10 +39,6 @@ const Header = () => {
       {" | "}
       <NavLink to="/about" activeStyle={activeStyle}>
         About
-      </NavLink>
-      {" | "}
-      <NavLink to="/Depositos" activeStyle={activeStyle}>
-        Depositos
       </NavLink>
     </nav>
   );

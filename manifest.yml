@@ -1,6 +1,6 @@
 ---
 applications:
-- name: react-redux-learn
+- name: you-react
   memory: 128MB
   instances: 1
   buildpack: staticfile_buildpack

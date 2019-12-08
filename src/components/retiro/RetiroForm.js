@@ -41,4 +41,4 @@ RetiroForm.propTypes = {
   saving: PropTypes.bool
 };
 
-export default ClienteForm;
+export default RetiroForm;
