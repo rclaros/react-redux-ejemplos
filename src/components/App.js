@@ -26,15 +26,21 @@ import TransferPage from "./transferencias/TransferPage";
 import MovimientoPage from "./movimiento/MovimientoPage";
 import ManageMovimientoPage from "./movimiento/ManageMovimientoPage";
 
+import RetiroPage from "./retiro/RetiroPage";
+import ManageRetiroPage from "./retiro/ManageRetiroPage";
+
 class App extends Component {
   render() {
-     return (
     <div className="container-fluid">
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/retiros" component={RetiroPage} />
+        <Route path="/retiro/:slug" component={ManageRetiroPage} />
+        <Route path="/retiro" component={ManageRetiroPage} />
 
+        <Route component={PageNotFound} />
         <Route path="/transferencias" component={TransferPage} />
         <Route path="/login" component={LoginForm} />
         <Route path="/MisTransacciones" component={CoursesPage} />
