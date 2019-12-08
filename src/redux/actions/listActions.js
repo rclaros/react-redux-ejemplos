@@ -1,6 +1,7 @@
 import * as types from "./actionTypes";
 import * as professorApi from "../../api/professorApi";
 import * as clienteApi from "../../api/clienteApi";
+import * as movimientoApi from "../../api/movimientoApi";
 import { beginApiCall, apiCallError } from "./apiStatusActions";
 
 export function getProfessorsData(professors) {
@@ -9,6 +10,11 @@ export function getProfessorsData(professors) {
 
 export function getClientesData(clientes) {
   return { type: types.LOAD_LIST,list:{professors:clientes}}; 
+}
+
+
+export function getMovimientosData(movimientos) {
+  return { type: types.LOAD_LIST,list:{movimientos:movimientos}}; 
 }
 
 export function getListProfessors() {
@@ -56,3 +62,18 @@ export function getClientes() {
   };
 }
 
+
+export function getMovimientos() {
+  return function (dispatch) {
+    dispatch(beginApiCall());
+    return movimientoApi
+      .getMovimientos()
+      .then(movimientos => {
+        dispatch(getMovimientosData(movimientos));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}

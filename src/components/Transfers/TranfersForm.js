@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
 
-const ClienteForm = ({
+const TranfersForm = ({
   cliente,
-  Cuenta,
   onSave,
   onChange,
   saving = false,
@@ -26,13 +25,6 @@ const ClienteForm = ({
         onChange={onChange}
         error={errors.title}
       />
-       <TextInput
-        name="Cuenta"
-        label="Cuenta"
-        value={cliente.Cuenta}
-        onChange={onChange}
-        error={errors.Cuenta}
-      />
 
        <button type="submit" disabled={saving} className="btn btn-primary">
         {saving ? "Saving..." : "Save"}
@@ -41,7 +33,7 @@ const ClienteForm = ({
   );
 };
 
-ClienteForm.propTypes = {
+TranfersForm.propTypes = {
   cliente: PropTypes.object.isRequired,
   errors: PropTypes.object,
   onSave: PropTypes.func.isRequired,
@@ -49,4 +41,4 @@ ClienteForm.propTypes = {
   saving: PropTypes.bool
 };
 
-export default ClienteForm;
+export default TranfersForm;

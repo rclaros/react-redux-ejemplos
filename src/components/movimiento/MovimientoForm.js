@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
 
-const ClienteForm = ({
-  cliente,
-  Cuenta,
+const MovimientoForm = ({
+  movimiento,
   onSave,
   onChange,
   saving = false,
@@ -12,7 +11,7 @@ const ClienteForm = ({
 }) => {
   return (
     <form onSubmit={onSave}>
-      <h2>{cliente.id ? "Edit" : "Add"} Cliente</h2>
+      <h2>{movimiento.id ? "Edit" : "Add"} Movimiento</h2>
       {errors.onSave && (
         <div className="alert alert-danger" role="alert">
           {errors.onSave}
@@ -20,18 +19,11 @@ const ClienteForm = ({
       )}
 
       <TextInput
-        name="name" /*clientename revisar*/
-        label="name"
-        value={cliente.name}
+        name="fecha"
+        label="fecha"
+        value={movimiento.name}
         onChange={onChange}
         error={errors.title}
-      />
-       <TextInput
-        name="Cuenta"
-        label="Cuenta"
-        value={cliente.Cuenta}
-        onChange={onChange}
-        error={errors.Cuenta}
       />
 
        <button type="submit" disabled={saving} className="btn btn-primary">
@@ -41,12 +33,12 @@ const ClienteForm = ({
   );
 };
 
-ClienteForm.propTypes = {
-  cliente: PropTypes.object.isRequired,
+MovimientoForm.propTypes = {
+  movimiento: PropTypes.object.isRequired,
   errors: PropTypes.object,
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   saving: PropTypes.bool
 };
 
-export default ClienteForm;
+export default MovimientoForm;

@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as professorActions from "../../redux/actions/professorActions";
+import * as clienteActions from "../../redux/actions/clienteActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
-import ProfessorList from "./ProfessorList";
+import ClienteList from "./ClienteList";
 import { Redirect } from "react-router-dom";
-/*import Spinner from "../common/Spinner";*/
+import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 import Pagination from "react-js-pagination";
 
-class ProfessorsPage extends React.Component {
+class ClientesPage extends React.Component {
   state = {
-    redirectToAddProfessorPage: false,
+    redirectToAddClientePage: false,
     page_current: 1,
     page_show: 5,
     sortName: undefined,
@@ -19,25 +19,25 @@ class ProfessorsPage extends React.Component {
   };
 
   componentDidMount() {
-    const { professors, actions } = this.props;
-    if (professors.length === 0) {
-      actions.getProfessors().catch(error => {
-        alert("Loading professors failed" + error);
+    const { clientes, actions } = this.props;
+    if (clientes.length === 0) {
+      actions.getClientes().catch(error => {
+        alert("Loading clientes failed" + error);
       });
     }
   }
 
-  handleDeleteProfessor = async professor => {
-    toast.success("Professor deleted");
+  handleDeleteCliente = async cliente => {
+    toast.success("Cliente deleted");
     try {
-      await this.props.actions.deleteProfessor(professor);
+      await this.props.actions.deleteCliente(cliente);
     } catch (error) {
       toast.error("Delete failed. " + error.message, { autoClose: false });
     }
   };
   handlePageChange = async page => {
     this.setState({ page_current: page });
-    await this.props.actions.getProfessors(page);
+    await this.props.actions.getClientes(page);
   };
   handleSortChange = async (sortName, sortOrder) => {
     this.setState({
@@ -45,7 +45,7 @@ class ProfessorsPage extends React.Component {
       sortName: sortName,
       sortOrder: sortOrder
     });
-    await this.props.actions.getProfessors(
+    await this.props.actions.getClientes(
       this.state.page_current,
       sortName,
       sortOrder
@@ -56,20 +56,20 @@ class ProfessorsPage extends React.Component {
     console.log("this.props", this.props);
     return (
       <>
-        {this.state.redirectToAddProfessorPage && <Redirect to="/professor" />}
-        <h2>Professors</h2>
+        {this.state.redirectToAddClientePage && <Redirect to="/cliente" />}
+        <h2>Clientes</h2>
         <button
           style={{ marginBottom: 20 }}
-          className="btn btn-primary add-professor"
-          onClick={() => this.setState({ redirectToAddProfessorPage: true })}
+          className="btn btn-primary add-cliente"
+          onClick={() => this.setState({ redirectToAddClientePage: true })}
         >
-          Add Professor
+          Add Cliente
         </button>
 
-        <ProfessorList
-          onDeleteClick={this.handleDeleteProfessor}
+        <ClienteList
+          onDeleteClick={this.handleDeleteCliente}
           onOrder={this.handleSortChange}
-          professors={this.props.professors}
+          clientes={this.props.clientes}
           sortName={this.state.sortName}
           sortOrder={this.state.sortOrder}
         />
@@ -77,7 +77,7 @@ class ProfessorsPage extends React.Component {
           <Pagination
             activePage={this.state.page_current}
             itemsCountPerPage={this.state.page_show}
-            totalItemsCount={this.props.total_professor}
+            totalItemsCount={this.props.total_cliente}
             onChange={this.handlePageChange}
           />
         </div>
@@ -86,8 +86,8 @@ class ProfessorsPage extends React.Component {
   }
 }
 
-ProfessorsPage.propTypes = {
-  professors: PropTypes.array.isRequired,
+ClientesPage.propTypes = {
+  clientes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
 };
@@ -95,8 +95,8 @@ ProfessorsPage.propTypes = {
 function mapStateToProps(state) {
   console.log("mapStateToProps", state);
   return {
-    professors: state.professors.data,
-    total_professor: state.professors.total,
+    clientes: state.clientes.data,
+    total_cliente: state.clientes.total,
     loading: state.apiCallsInProgress > 0
   };
 }
@@ -104,16 +104,17 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      getProfessors: bindActionCreators(
-        professorActions.getProfessorsData,
+      getClientes: bindActionCreators(
+        clienteActions.getClientesData,
         dispatch
       ),
-      deleteProfessor: bindActionCreators(
-        professorActions.deleteProfessor,
+      deleteCliente: bindActionCreators(
+        clienteActions.deleteCliente,
+       
         dispatch
       )
     }
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfessorsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ClientesPage);
