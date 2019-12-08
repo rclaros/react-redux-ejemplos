@@ -14,8 +14,12 @@ export default {
   list:{
     professors:[]
   },
-  listcliente:{
+  listCliente:{
     clientes:[]
+    /*Cuenta:[]
+    data:[],
+    total:*/
   },
+
   apiCallsInProgress: 0
 };
