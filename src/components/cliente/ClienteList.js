@@ -69,13 +69,26 @@ class ClienteList extends React.Component {
             tdStyle={{ whiteSpace: "normal" }}
             width="250"
           >
-            Cliente
+             cliente
           </TableHeaderColumn>
           <TableHeaderColumn
-            dataField="name" /*revisarnameCliente*/
+            dataField="cliente"
+            dataSort
+            dataAlign="center"
+            dataFormat={this.cellButton}
+            tdStyle={{ whiteSpace: "normal" }}
+            width="250"
+          >
+
+           Tranferencia
+          </TableHeaderColumn>
+          <TableHeaderColumn
+            dataField="transaction" 
+            dataSort
             dataFormat={this.cellButtonDelete}
             dataAlign="center"
           >
+            
             Opcion
           </TableHeaderColumn>
         </BootstrapTable>
