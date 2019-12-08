@@ -7,7 +7,9 @@ const Header = () => {
     <nav>
       <NavLink to="/login" activeStyle={activeStyle} exact>
         login
-          <NavLink to="/" activeStyle={activeStyle} exact>
+      </NavLink>
+      {" | "}
+      <NavLink to="/" activeStyle={activeStyle} exact>
         Home
       </NavLink>
       {" | "}
@@ -15,10 +17,10 @@ const Header = () => {
         courses
       </NavLink>
       {" | "}
-     <NavLink to="/" activeStyle={activeStyle} exact>
+      <NavLink to="/" activeStyle={activeStyle} exact>
         Home
       </NavLink>
-      {" | "} 
+      {" | "}
       <NavLink to="/Mistransciones" activeStyle={activeStyle} exact>
         MisTransaciones
       </NavLink>
@@ -29,7 +31,9 @@ const Header = () => {
       {" | "}
       <NavLink to="/transferencias" activeStyle={activeStyle}>
         Transferencia
-          <NavLink to="/movimientos" activeStyle={activeStyle}>
+      </NavLink>
+      {" | "}
+      <NavLink to="/movimientos" activeStyle={activeStyle}>
         Mis Transacciones
       </NavLink>
       {" | "}
